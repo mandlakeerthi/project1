@@ -37,13 +37,13 @@ pipeline {
             }
         }
 
-        stage ('Build & Push image') {
-
-            steps {
-                sh '''docker build -t jyothibasuk/poc-1 .
-                docker push jyothibasuk/poc-1'''                
-            }
-        }
+        //stage ('Build & Push image') {
+        //
+        //    steps {
+        //        sh '''docker build -t jyothibasuk/poc-1 .
+        //        docker push jyothibasuk/poc-1'''                
+        //    }
+        //}
 
         stage ('K8S Deploy') {
 

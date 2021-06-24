@@ -17,19 +17,18 @@ spec:
         image: jyothibasuk/poc-1
         imagePullPolicy: Always
         ports:
-        - containerPort: 80
-# service type loadbalancer       
+        - containerPort: 8080
+# service type loadbalancer
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: my-aks-svc
+  name: aks-svc
 spec:
   selector:
     app: my-app
   ports:
     - protocol: TCP
-      port: 80
-      targetPort: 80
-      nodePort: 30008
+      port: 8080
+      targetPort: 30008
   type: LoadBalancer

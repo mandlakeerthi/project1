@@ -33,7 +33,9 @@ pipeline {
         stage ('Store Artifacts-jfrog') {
 
             steps {
-                sh 'curl -uadmin:AP34mCp3r3nLNeLoHTaGnbrAuEJ -T webapp/target/webapp.war "http://52.140.116.20:8081/artifactory/example-repo-local/"'
+                sh '''cp webapp/target/webapp.war webapp/target/webapp_$BUILD_TIMESTAMP.war
+                curl -uadmin:AP34mCp3r3nLNeLoHTaGnbrAuEJ -T webapp/target/webapp_$BUILD_TIMESTAMP.war "http://52.140.116.20:8081/artifactory/example-repo-local/"'''
+                
             }
         }
         

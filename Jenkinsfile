@@ -33,8 +33,10 @@ pipeline {
         stage ('Store Artifacts-jfrog') {
 
             steps {
-                sh '''cp webapp/target/webapp.war webapp/target/webapp_$BUILD_TIMESTAMP.war
-                curl -uadmin:AP34mCp3r3nLNeLoHTaGnbrAuEJ -T webapp/target/webapp_$BUILD_TIMESTAMP.war "http://52.140.116.20:8081/artifactory/example-repo-local/"'''
+                sh '''cp webapp/target/webapp.war webapp/target/webapp_$BUILD_ID.war
+                curl -uadmin:AP34mCp3r3nLNeLoHTaGnbrAuEJ -T webapp/target/webapp_$BUILD_ID.war "http://52.140.116.20:8081/artifactory/example-repo-local/"
+                cd /home/poc-admin/poc
+                curl -uadmin:AP34mCp3r3nLNeLoHTaGnbrAuEJ -O http://52.140.116.20:8082/artifactory/example-repo-local/webapp_$BUILD_ID.war'''
                 
             }
         }
@@ -52,8 +54,9 @@ pipeline {
             steps {
                 sh '''docker build -t poc-1:v1.$BUILD_ID .
                 docker tag poc-1:v1.$BUILD_ID jyothibasuk/poc-1:v1.$BUILD_ID
-                docker push jyothibasuk/poc-1:v1.$BUILD_ID'''
-                //docker rmi jyothibasuk/poc-1:v1-$BUILD_TIMESTAMP'''                
+                docker push jyothibasuk/poc-1:v1.$BUILD_ID
+                docker rmi poc-1:v1.$BUILD_ID
+                docker rmi jyothibasuk/poc-1:v1.$BUILD_ID'''                
             }
         }
 

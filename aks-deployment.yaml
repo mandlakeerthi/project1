@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: my-container
-        image: pavanisam/mypython-app:latest
+        image: jyothibasuk/poc-1:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8080

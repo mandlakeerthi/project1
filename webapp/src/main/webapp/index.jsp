@@ -1,2 +1,2 @@
-<h1> Hello, Welcome to Simple aks Project - jyothibasu  </h1>
+<h1> Hello, Welcome to simple aks project - jyothibasu  </h1>
 

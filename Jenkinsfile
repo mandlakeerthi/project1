@@ -61,7 +61,6 @@ pipeline {
                     kubernetesDeploy(
                     configs: 'aks-deployment.yaml',
                     kubeconfigId: 'k8s-cluster',
-                    enableConfigSubstitution: true
                     ) 
                 }
                 

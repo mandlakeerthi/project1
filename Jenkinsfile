@@ -48,7 +48,7 @@ pipeline {
         stage ('Build & Push image') {
         
             steps {
-                sh '''docker build -t jyothibasuk/poc-1:v1-$BUILD_TIMESTAMP .
+                sh '''docker build . -t jyothibasuk/poc-1:v1-$BUILD_TIMESTAMP
                 docker push jyothibasuk/poc-1:v1-$BUILD_TIMESTAMP
                 docker rmi jyothibasuk/poc-1:v1-$BUILD_TIMESTAMP'''                
             }

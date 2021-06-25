@@ -36,14 +36,22 @@ pipeline {
                 sh 'curl -uadmin:AP34mCp3r3nLNeLoHTaGnbrAuEJ -T webapp/target/webapp.war "http://52.140.116.20:8081/artifactory/example-repo-local/"'
             }
         }
+        
+        stage('docker login'){
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'docker_cred', passwordVariable: 'dockerhubpassword', usernameVariable: 'dockerhubuser')]) {
+                    sh "docker login -u $dockerhubuser -p $dockerhubpassword"
+                }
+            }
+        }
 
-        //stage ('Build & Push image') {
-        //
-        //    steps {
-        //        sh '''docker build -t jyothibasuk/poc-1 .
-        //        docker push jyothibasuk/poc-1'''                
-        //    }
-        //}
+        stage ('Build & Push image') {
+        
+            steps {
+                sh '''docker build -t jyothibasuk/poc-1 .
+                docker push jyothibasuk/poc-1'''                
+            }
+        }
 
         stage ('K8S Deploy') {
 

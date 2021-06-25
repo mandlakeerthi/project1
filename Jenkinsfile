@@ -60,7 +60,7 @@ pipeline {
                     
                     kubernetesDeploy(
                     configs: 'aks-deployment.yaml',
-                    kubeconfigId: 'AKS_Credentials',
+                    kubeconfigId: 'k8s-cluster',
                     enableConfigSubstitution: true
                     ) 
                 }

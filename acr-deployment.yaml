@@ -19,7 +19,7 @@ spec:
         ports:
         - containerPort: 8081
       imagePullSecrets:
-      - name: acrlogin
+      - name: aksacrtcspoc
 # service type loadbalancer
 ---
 apiVersion: v1
@@ -35,14 +35,3 @@ spec:
       targetPort: 8081
       nodePort: 30010
   type: LoadBalancer
-# secret
----
-apiVersion: v1
-kind: Secret
-metadata:
-    name:acrlogin
-type: Opaque
-data:
-    docker-server: k8srepo.azurecr.io
-    docker-username: aksacrtcspoc
-    docker-password: hHr6mA5/g7Sdt8uXpuJhmF6ax4IbgKBs

@@ -62,7 +62,7 @@ pipeline {
                 script {
                     
                     kubernetesDeploy(
-                    configs: 'aks-deployment.yaml',
+                    configs: 'acr-deployment.yaml',
                     kubeconfigId: 'k8s-cluster',
                     ) 
                 }

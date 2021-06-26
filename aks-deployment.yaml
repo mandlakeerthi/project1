@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: aks-deployment
+  name: aks1-deployment
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: my-app
+      app: my-app1
   template:
     metadata:
       labels:
-        app: my-app
+        app: my-app1
     spec:
       containers:
-      - name: my-container
+      - name: my-container1
         image: jyothibasuk/poc-1:v1.$BUILD_ID
         imagePullPolicy: Always
         ports:
-        - containerPort: 8080
+        - containerPort: 8081
       imagePullSecrets:
       - name: acrlogin
 # service type loadbalancer
@@ -25,15 +25,15 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: aks-svc
+  name: aks1-svc
 spec:
   selector:
-    app: my-app
+    app: my-app1
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 8080
-      nodePort: 30008
+      targetPort: 8081
+      nodePort: 30010
   type: LoadBalancer
 # secret
 ---

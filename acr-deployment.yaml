@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: my-container1
-        image: jyothibasuk/poc-1:v1.$BUILD_ID
+        image: aksacrtcspoc.azurecr.io/poc-1:v1.$BUILD_ID
         imagePullPolicy: Always
         ports:
         - containerPort: 8081

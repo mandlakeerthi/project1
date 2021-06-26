@@ -11,7 +11,7 @@ pipeline {
             }
         }
 
-        stage ('"Code Analysis"') {
+        stage ('Code Analysis') {
 
             steps {
                 sh '''mvn sonar:sonar \\
@@ -30,7 +30,7 @@ pipeline {
             }
         }
 
-        stage ('Store Artifacts-jfrog') {
+        stage ('Push Artifacts to Jfrog') {
 
             steps {
                 sh '''cp webapp/target/webapp.war webapp/target/webapp_$BUILD_ID.war
@@ -39,7 +39,7 @@ pipeline {
             }
         }
         
-        stage('docker Build & Push image'){
+        stage('Docker Build & Push image'){
             steps {
                 withCredentials([usernamePassword(credentialsId: 'docker_cred', passwordVariable: 'dockerhubpassword', usernameVariable: 'dockerhubuser')]) {
                     sh "docker login -u $dockerhubuser -p $dockerhubpassword"
@@ -52,7 +52,7 @@ pipeline {
             }
         }
 
-        stage ('K8S Deploy') {
+        stage ('Deploy to AKS Cluster') {
 
             steps {
                 script {

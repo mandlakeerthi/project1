@@ -11,7 +11,7 @@ pipeline {
         stage ('checkout') {
 
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/acr']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/jyothibasu/hello-world.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/acr']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/mandlakeerthi/project1.git']]])
             }
         }
 
@@ -19,9 +19,9 @@ pipeline {
 
             steps {
                 sh '''mvn sonar:sonar \\
-                -Dsonar.projectKey=Poc-AKS1 \\
-                -Dsonar.host.url=http://52.140.116.20:9000 \\
-                -Dsonar.login=e5ae4daa1e4c7cffe91ed213468a069ce581ff69'''
+                -Dsonar.projectKey=Keerthi \\
+                -Dsonar.host.url=http://104.41.136.29:9000 \\
+                -Dsonar.login=d7d17ca3cdd88cca1d5e70789158405dc900d324'''
             }
         }
 

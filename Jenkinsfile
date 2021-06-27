@@ -38,7 +38,7 @@ pipeline {
 
             steps {
                 sh '''cp webapp/target/webapp.war webapp/target/webapp_$BUILD_ID.war
-                curl -uadmin:Pappaya@2025 -T webapp/target/webapp_$BUILD_ID.war "http://104.41.136.29:8081/artifactory/example-repo-local/"'''
+                curl -uadmin:Pappaya@2025 -T webapp/target/webapp_$BUILD_ID.war "http://104.41.136.29:8081/repository/maven/"'''
                 
             }
         }

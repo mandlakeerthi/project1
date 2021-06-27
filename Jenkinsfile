@@ -2,10 +2,6 @@ pipeline {
 
     agent any
 
-    environment {
-        registry = "aksacrtcspoc.azurecr.io"
-    }
-
     stages {
 
         stage ('checkout') {

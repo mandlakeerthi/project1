@@ -47,10 +47,9 @@ pipeline {
             steps {
                 sh "docker login -u 'keerthimandla' -p 'Keerthi@123'"
                 sh '''docker build -t poc-1:v1.$BUILD_ID .
-                docker tag poc-1:v1.$BUILD_ID keerthi-poc-1:v1.$BUILD_ID
-                docker push keerthimandla/keerthi:keerthi-poc-1:v1.$BUILD_ID
-                docker rmi poc-1:v1.$BUILD_ID
-                docker rmi keerthimandla/keerthi/poc-1:v1.$BUILD_ID''' 
+                docker tag poc-1:v1.$BUILD_ID keerthimandla/keerthi:latest
+                docker push keerthimandla/keerthi:latest
+                docker rmi keerthimandla/keerthi:latest''' 
             }
         }
 

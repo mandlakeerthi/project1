@@ -34,11 +34,11 @@ pipeline {
             }
         }
 
-        stage ('Store Artifacts-jfrog') {
+        stage ('Store Artifacts-Nexus') {
 
             steps {
                 sh '''cp webapp/target/webapp.war webapp/target/webapp_$BUILD_ID.war
-                curl -uadmin:AP34mCp3r3nLNeLoHTaGnbrAuEJ -T webapp/target/webapp_$BUILD_ID.war "http://52.140.116.20:8081/artifactory/example-repo-local/"'''
+                curl -uadmin:Pappaya@2025 -T webapp/target/webapp_$BUILD_ID.war "http://104.41.136.29:8081/artifactory/example-repo-local/"'''
                 
             }
         }
@@ -53,20 +53,6 @@ pipeline {
                 docker push $registry/poc-1:v1.$BUILD_ID
                 docker rmi poc-1:v1.$BUILD_ID
                 docker rmi $registry/poc-1:v1.$BUILD_ID'''
-            }
-        }
-
-        stage ('K8S Deploy') {
-
-            steps {
-                script {
-                    
-                    kubernetesDeploy(
-                    configs: 'acr-deployment.yaml',
-                    kubeconfigId: 'k8s-cluster',
-                    ) 
-                }
-                
             }
         }
 

@@ -46,8 +46,23 @@ pipeline {
                 docker tag poc-1:v1.$BUILD_ID keerthimandla/keerthi:$BUILD_ID
                 docker push keerthimandla/keerthi:$BUILD_ID
                 docker rmi keerthimandla/keerthi:$BUILD_ID''' 
+              }
+        }
+
+        stage ('Deploy to AKS Cluster') {
+
+            steps {
+                script {
+                    
+                    kubernetesDeploy(
+                    configs: 'acr-deployment.yaml',
+                    kubeconfigId: 'k8s',
+                    ) 
+                }
+                
             }
         }
 
     }
 }
+

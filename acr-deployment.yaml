@@ -13,8 +13,8 @@ spec:
         app: my-app1
     spec:
       containers:
-      - name: my-container1
-        image: aksacrtcspoc.azurecr.io/poc-1:v1.$BUILD_ID
+      - name: tomcat:latest
+        image: 04b179d5d271/poc-1:v1.$BUILD_ID
         imagePullPolicy: Always
         ports:
         - containerPort: 8080

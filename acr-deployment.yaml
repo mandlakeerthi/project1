@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: poc-1
-        image: 04b179d5d271/poc-1:v1.$BUILD_ID
+        image: 04b179d5d271:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8080

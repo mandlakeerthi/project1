@@ -13,7 +13,7 @@ spec:
         app: my-app1
     spec:
       containers:
-      - name: tomcat:latest
+      - name: poc-1
         image: 04b179d5d271/poc-1:v1.$BUILD_ID
         imagePullPolicy: Always
         ports:

@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: poc-1
-        image: keerthimandla/keerthi:latest
+        image: keerthimandla/keerthi:v1.$BUILD_ID
         imagePullPolicy: Always
         ports:
         - containerPort: 8080

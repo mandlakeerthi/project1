@@ -14,12 +14,11 @@ spec:
     spec:
       containers:
       - name: poc-1
-        image: 04b179d5d271:latest
+        image: keerthimandla/keerthi:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
-      imagePullSecrets:
-      - name: aksacrtcspoc
+      
 # service type loadbalancer
 ---
 apiVersion: v1

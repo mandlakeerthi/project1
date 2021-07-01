@@ -41,7 +41,6 @@ pipeline {
         
         stage('Docker Build image'){
             steps {
-                sh "docker login -u 'keerthimandla' -p 'Keerthi@123'"
                 sh '''docker build -t poc-1:v1.$BUILD_ID .
                 docker tag poc-1:v1.$BUILD_ID keerthimandla/keerthi:v1.$BUILD_ID
                 docker push keerthimandla/keerthi:v1.$BUILD_ID

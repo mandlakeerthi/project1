@@ -34,7 +34,7 @@ pipeline {
 
             steps {
                 sh '''cp webapp/target/webapp.war webapp/target/webapp_$BUILD_ID.war
-                curl -uadmin:AP34mCp3r3nLNeLoHTaGnbrAuEJ -T webapp/target/webapp_$BUILD_ID.war "http://104.41.136.29:8081/repository/maven/"'''
+                curl -uadmin:Pappaya@2025 --upload-file webapp/target/webapp_$BUILD_ID.war "http://104.41.136.29:8081/repository/maven/"'''
                 
             }
         }

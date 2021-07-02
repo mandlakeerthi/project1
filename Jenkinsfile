@@ -39,8 +39,11 @@ pipeline {
             }
         }
         
-        stage('Docker Build image'){
+        stage('Docker Build & Push image'){
             steps {
+                withCredentials([usernamePassword(credentialsId: 'docker_cred', passwordVariable: 'dockerhubpassword', usernameVariable: 'dockerhubuser')]) {
+                    sh "docker login -u $dockerhubuser -p $dockerhubpassword"
+                }
                 sh '''docker build -t poc-1:v1.$BUILD_ID .
                 docker tag poc-1:v1.$BUILD_ID keerthimandla/keerthi:v1.$BUILD_ID
                 docker push keerthimandla/keerthi:v1.$BUILD_ID

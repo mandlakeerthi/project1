@@ -32,7 +32,7 @@ pipeline {
 
         stage ('Store Artifacts-Nexus') {
 
-            steps 
+            steps {
                 sh '''cp webapp/target/webapp.war webapp/target/webapp_$BUILD_ID.war
                 curl -uadmin:Pappaya@2025 --upload-file webapp/target/webapp_$BUILD_ID.war "http://104.41.136.29:8081/repository/maven/"'''
                 
